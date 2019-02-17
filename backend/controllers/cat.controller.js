@@ -7,9 +7,9 @@ module.exports.index = async (req, res) => {
 }
 
 module.exports.createCat = async (req, res) => {
-	const { name, color } = req.body
+	const { name, color, image } = req.body
 
-	const cat = new Cat({ name, color })
+	const cat = new Cat({ name, color, image })
 	await cat.save()
 
 	res.json({ message: 'cat is created!' })
@@ -25,10 +25,10 @@ module.exports.getCat = async (req, res) => {
 
 module.exports.updateCat = async (req, res) => {
 	const { catId } = req.params
-	const { name, color } = req.body
+	const { name, color, image } = req.body
 
 	const cat = await Cat.where({ _id: catId })
-		.update({ name, color })
+		.update({ name, color, image })
 
 	res.json({ message: 'cat is updated!' })
 }

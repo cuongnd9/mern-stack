@@ -4,6 +4,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const logger = require('morgan')
+const cors = require('cors')
 
 const catRouter = require('./routes/cat.route')
 
@@ -16,6 +17,7 @@ mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true});
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(logger('dev'))
+app.use(cors())
 
 app.get('/', (req, res) => {
 	res.send('Chao Xin!!')
