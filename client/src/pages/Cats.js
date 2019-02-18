@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import swal from '@sweetalert/with-react';
 import { Container, Row, Button } from 'reactstrap';
 
 import Cat from '../components/Cat';
@@ -20,15 +21,12 @@ class Cats extends Component {
 			.then(res => this.setState({
 				cats: res.data
 			}))
-			.catch(err => console.error(err)); 
+			.catch(() => 
+				swal("Oops!", "Seems like we couldn't fetch the cats", "error")
+			); 
 	}
 
 	handleClick() {
-		// axios.post('http://localhost:8080/api/cats', {
-		// 	name: '4chan',
-		// 	color: 'grey',
-		// 	image: 'https://www.humanesociety.org/sites/default/files/2018/06/cat-217679.jpg'
-		// })
 		this.setState({
 			modal: true
 		});
@@ -38,6 +36,23 @@ class Cats extends Component {
 		this.setState({
 			modal: value
 		});
+	}
+
+	handleCreateCat(cat) {
+		const { name, color, image } = cat;
+		axios.post('http://localhost:8080/api/cats', {
+			name, color, image
+		})
+			.then(() => {
+				swal("Good job!", "The new cat is created!", "success");
+				const { cats } = this.state;
+				this.setState({
+					cats: [...cats, {...cat}]
+				});
+			})
+			.catch(() => 
+				swal("Oops!", "Seems like we couldn't create the new cat", "error")
+			);
 	}
 	
 	render() {
@@ -56,7 +71,13 @@ class Cats extends Component {
 					}
 				</Row>
 				{
-					modal ? <CreateCat modal={modal} toggleModal={this.handleToggleModal.bind(this)}/> : null
+					modal 
+					? <CreateCat 
+							modal={modal} 
+							toggleModal={this.handleToggleModal.bind(this)}
+							createCat={this.handleCreateCat.bind(this)}
+						/> 
+					: null
 				}
 			</Container>
 		);
@@ -70,7 +91,8 @@ Cats.propTypes = {
       color: PropTypes.string,
       image: PropTypes.string
     })
-  )
+	),
+	modal: PropTypes.bool
 }
 
 export default Cats;

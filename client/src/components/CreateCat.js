@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { 
   Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input
 } from 'reactstrap';
@@ -7,11 +8,12 @@ class CreateCat extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false
+      modal: false    
     };
 
     this.toggle = this.toggle.bind(this);
     this.save = this.save.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentWillMount() {
@@ -32,6 +34,19 @@ class CreateCat extends React.Component {
 
   save() {
     this.props.toggleModal(!this.state.modal);
+
+    const { name, color, image } = this.state;
+    const cat = { name, color, image };
+    this.props.createCat(cat);
+  }
+
+  handleChange(event) {
+    const { name, value } = event.target;
+    this.setState(
+      {
+        [name]: value
+      }
+    );
   }
 
   render() {
@@ -45,15 +60,15 @@ class CreateCat extends React.Component {
             <Form>
               <FormGroup>
                 <Label for="name">Name</Label>
-                <Input type="text" name="name" id="name" placeholder="Enter cat name..." />
+                <Input type="text" name="name" id="name" placeholder="Enter cat name..." onChange={this.handleChange} />
               </FormGroup>
               <FormGroup>
                 <Label for="color">Color</Label>
-                <Input type="text" name="color" id="color" placeholder="Enter cat color..." />
+                <Input type="text" name="color" id="color" placeholder="Enter cat color..." onChange={this.handleChange} />
               </FormGroup>
               <FormGroup>
-                <Label for="exampleEmail">Image</Label>
-                <Input type="text" name="color" id="color" placeholder="Enter cat image..." />
+                <Label for="image">Image</Label>
+                <Input type="text" name="image" id="image" placeholder="Enter cat image..." onChange={this.handleChange} />
               </FormGroup>
             </Form>
           </ModalBody>
@@ -66,5 +81,9 @@ class CreateCat extends React.Component {
     );
   }
 }
+
+CreateCat.propTypes = {
+  modal: PropTypes.bool
+};
 
 export default CreateCat;
