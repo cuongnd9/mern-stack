@@ -4,11 +4,11 @@
 
 ## Install
 
-Install dependencies for `client` & `backend` folders
+Install dependencies for `client` & `server` folders
 ```
 $ npm i
 ```
-Create `.env` file for `backend` folder
+Create `.env` file for `server` folder
 ```
 PORT=<Your Port>
 MONGODB_URI=<Your Mongodb URI>
@@ -16,10 +16,12 @@ MONGODB_URI=<Your Mongodb URI>
 
 ## Usage
 
-One line to run for `client` & `backend` folders
+One line to run for `client` & `server` folders
 ```
 $ npm start
 ```
+
+## API
 
 | Route            | HTTP method | Description                 |
 |------------------|-------------|-----------------------------|
