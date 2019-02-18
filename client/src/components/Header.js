@@ -1,11 +1,6 @@
 import React from 'react';
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  Nav,
-  NavItem,
-  NavLink
+import { 
+  Collapse, Navbar, NavbarToggler, Nav, NavItem, NavLink 
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
@@ -33,6 +28,9 @@ export default class Example extends React.Component {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
+              <NavItem>
+                <Link to='/' className='nav-link'>Home</Link>
+              </NavItem>
               <NavItem>
                 <Link to='/cats' className='nav-link'>Cats</Link>
               </NavItem>

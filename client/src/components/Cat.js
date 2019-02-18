@@ -1,12 +1,6 @@
 import React from 'react';
 import { 
-	Col, 
-	Card, 
-	CardImg, 
-	CardText, 
-	CardBody,
-	CardTitle, 
-	Button 
+	Col, Card, CardImg, CardText, CardBody, CardTitle, Button 
 } from 'reactstrap';
 
 function Cat(props) {
@@ -18,6 +12,7 @@ function Cat(props) {
         <CardBody>
           <CardTitle className='text-warning display-4'>{cat.name}</CardTitle>
           <CardText className='text-success'>color: {cat.color}</CardText>
+          <Button color='info' className='mr-2'>Detail</Button>
           <Button color='primary' className='mr-2'>Edit</Button>
           <Button color='danger'>Delete</Button>
         </CardBody>
