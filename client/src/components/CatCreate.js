@@ -4,7 +4,7 @@ import {
   Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input
 } from 'reactstrap';
 
-class CreateCat extends React.Component {
+class CatCreate extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -50,8 +50,8 @@ class CreateCat extends React.Component {
   }
 
   render() {
-      const closeBtn = <button className="close" onClick={this.toggle}>&times;</button>;
-      return (
+    const closeBtn = <button className="close" onClick={this.toggle}>&times;</button>;
+    return (
       <div>
         <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel}</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
@@ -82,8 +82,8 @@ class CreateCat extends React.Component {
   }
 }
 
-CreateCat.propTypes = {
+CatCreate.propTypes = {
   modal: PropTypes.bool
 };
 
-export default CreateCat;
+export default CatCreate;

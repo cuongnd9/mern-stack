@@ -15,6 +15,8 @@ class CatDetail extends Component {
   }
 
   componentDidMount() {
+    document.title = 'Cat Detail | Simple MERN Stack';
+    
     const { catId } = this.props.match.params;
     axios.get('http://localhost:8080/api/cats/' + catId)
 			.then(res => this.setState({
