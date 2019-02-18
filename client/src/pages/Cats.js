@@ -83,12 +83,40 @@ class Cats extends Component {
 				const { cats } = this.state;
 				const index = this.findIndex(cats, cat);
 				this.setState({
-					cats: [...cats.slice(0, index), {...cat}, ...cats.slice(index)]
+					cats: [...cats.slice(0, index), {...cat}, ...cats.slice(index + 1)]
 				});
 			})
 			.catch(() => 
 				swal("Oops!", "Seems like we couldn't update this cat", "error")
 			);
+	}
+
+	handleDeleteCat(cat) {
+		swal({
+			title: "Are you sure?",
+			text: "Once deleted, you will not be able to recover this cat!",
+			icon: "warning",
+			buttons: true,
+			dangerMode: true,
+		})
+			.then(willDelete => {
+				if (willDelete) {
+					axios.delete(`http://localhost:8080/api/cats/${cat._id}`)
+						.then(() => {
+							swal("Good job!", "The new cat is deleted!", "success");
+							const { cats } = this.state;
+							const index = this.findIndex(cats, cat);
+							this.setState({
+								cats: [...cats.slice(0, index), ...cats.slice(index + 1)]
+							});
+						})
+						.catch(() => 
+							swal("Oops!", "Seems like we couldn't delete this cat", "error")
+						);
+				}
+			})
+		
+		
 	}
 
 	findIndex(cats, cat) {
@@ -112,7 +140,11 @@ class Cats extends Component {
 				<Row>
 					{
 						cats.map((cat, index) => 
-							<Cat key={index} editCat={this.handleShowEditModal.bind(this)}>
+							<Cat 
+								key={index} 
+								editCat={this.handleShowEditModal.bind(this)}
+								deleteCat={this.handleDeleteCat.bind(this)}
+							>
 								{cat}
 							</Cat>
 						)

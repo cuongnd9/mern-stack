@@ -21,6 +21,8 @@ One line to run for `client` & `backend` folders
 $ npm start
 ```
 
+## API
+
 | Route            | HTTP method | Description                 |
 |------------------|-------------|-----------------------------|
 | /api/cats        | `GET`       | Get all the cats.           |
