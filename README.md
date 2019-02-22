@@ -1,6 +1,6 @@
-# simple-mern-stack
+# Mern Stack Starter
 
-> 🍣 Getting Started with MERN Stack.
+> 🗡️🍣 Getting Started with MERN Stack.
 
 ## Install
 
@@ -8,7 +8,7 @@ Install dependencies
 ```
 $ npm install && npm run client-install
 ```
-Create `.env` file for `server` folder
+Create `.env` file
 ```
 MONGODB_URI=<Your Mongodb URI>
 ```
@@ -40,4 +40,4 @@ $ npm run dev
 
 ## License
 
-![](https://img.shields.io/github/license/cuongw/simple-mern-stack.svg?style=flat-square)
+![License](https://img.shields.io/github/license/cuongw/mern-stack-starter.svg?style=flat-square)
