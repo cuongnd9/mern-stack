@@ -22,7 +22,7 @@ class Cats extends Component {
   componentDidMount() {
 		document.title = 'Cats | Simple MERN Stack';
 
-		axios.get('http://localhost:8080/api/cats')
+		axios.get('/api/cats')
 			.then(res => this.setState({
 				cats: res.data
 			}))
@@ -58,7 +58,7 @@ class Cats extends Component {
 
 	handleCreateCat(cat) {
 		const { name, color, image } = cat;
-		axios.post('http://localhost:8080/api/cats', {
+		axios.post('/api/cats', {
 			name, color, image
 		})
 			.then(() => {
@@ -75,7 +75,7 @@ class Cats extends Component {
 
 	handleEditCat(cat) {
 		const { _id, name, color, image } = cat;
-		axios.put(`http://localhost:8080/api/cats/${_id}`, {
+		axios.put(`/api/cats/${_id}`, {
 			name, color, image
 		})
 			.then(() => {
@@ -101,7 +101,7 @@ class Cats extends Component {
 		})
 			.then(willDelete => {
 				if (willDelete) {
-					axios.delete(`http://localhost:8080/api/cats/${cat._id}`)
+					axios.delete(`/api/cats/${cat._id}`)
 						.then(() => {
 							swal("Good job!", "The new cat is deleted!", "success");
 							const { cats } = this.state;

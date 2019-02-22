@@ -10,7 +10,7 @@ const catRouter = require('./routes/cat.route')
 
 const app = express()
 
-const port = process.env.PORT || 8000
+const port = process.env.PORT || 8080
 
 mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true});
 

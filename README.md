@@ -4,21 +4,28 @@
 
 ## Install
 
-Install dependencies for `client` & `server` folders
+Install dependencies
 ```
-$ npm i
+$ npm install && npm run client-install
 ```
 Create `.env` file for `server` folder
 ```
-PORT=<Your Port>
 MONGODB_URI=<Your Mongodb URI>
 ```
 
 ## Usage
 
-One line to run for `client` & `server` folders
+Run `server` only
 ```
 $ npm start
+```
+Run `client` only
+```
+$ npm run client
+```
+Run `client` & `server`
+```
+$ npm run dev
 ```
 
 ## API
