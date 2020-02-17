@@ -1,4 +1,4 @@
-# Mern Stack Starter
+# mern-stack
 
 > 🗡️🍣 Getting Started with MERN Stack.
 
